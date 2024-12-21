@@ -8,9 +8,9 @@
 		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>sia</groupId>
+	<groupId>pepinoloco</groupId>
 	<artifactId>taco-cloud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>taco-cloud</name>
 	<description>Taco Cloud Application</description>
 	<url/>
