@@ -6,17 +6,22 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import lombok.extern.slf4j.Slf4j;
 
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
 import tacos.Taco;
 import tacos.TacoOrder;
 
+@Slf4j
 @Controller
 @RequestMapping("/design")
+@SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
   @ModelAttribute
@@ -54,6 +59,13 @@ public class DesignTacoController {
   @GetMapping
   public String showDesignForm() {
     return "design";
+  }
+
+  @PostMapping
+  public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
+    tacoOrder.addTaco(taco);
+    log.info("Processing taco: {}", tacoOrder);
+    return "redirect:/orders/current";
   }
 
   private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
