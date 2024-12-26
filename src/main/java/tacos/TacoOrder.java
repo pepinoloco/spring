@@ -1,5 +1,6 @@
 package tacos;
 
+import java.util.Date;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -9,6 +10,11 @@ import lombok.Data;
 
 @Data
 public class TacoOrder {
+  
+  private Long id;
+
+  private Date placedAt;
+
 
   @NotBlank(message="Delivery name is required")
   private String deliveryName;
